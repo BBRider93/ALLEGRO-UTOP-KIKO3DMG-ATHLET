@@ -1,0 +1,2317 @@
+C---- OBJECT
+@=======================================================================
+@********* REACTOR *********************
+@=======================================================================
+@=======================================================================
+@ CORE (LP, ASSEMBLIES, UP)
+@=======================================================================
+@ ANAMO
+K---- V-LP
+@ ITYPO FPARO ICMPO
+          1 1.0 0
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+   0.0    -1.2008 0.7677 0.0 0.0 0.0
+   1.2008  0.0    0.7677 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@ SI0 P0 T0 G0 Q0 ICK00
+        0.0 0.0 0.0 0.0 0.0 3
+@
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- J-LP
+@ ITYPO FPARO ICMPO
+         11 1.0 0
+----- NETWORK
+           0.0 1
+           1.0
+----- JUNTYPES
+@ ST0 JTYP0 ATYP0
+           0.0 6 J-LP.F
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+        0.0 -2.2008 0.7677 0.0 0.0 0.0
+      1.000 -1.2008 0.7677 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@ SI0 P0 T0 G0 Q0 ICK00
+   0.0 %REAC.P% %REAC.T% %REAC.MFR% 0.0 3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-UP
+@ ITYPO FPARO ICMPO
+     1 1.0  5
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT%+0.1 0.7677 0.0 0.0 0.0
+       1.04  %HEIGHT%+0.94 0.7677 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0        0.0         0.0        0.0        0.    3
+@-----------------------------------------------------------------
+@ ANAMO
+K---- CORE-BY
+@ ITYPO FPARO ICMPO
+    21   1. 0
+----- NETWORK
+@ SN01 NI01
+       0.00   %NCV%
+       %HEIGHT%
+----- JUNTYPES
+@ ST0	JTYP0	ATYP0
+  0.0	3		BY-VALVE
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+        .00   .00    0.2084 0.0 0.0 0.0
+       %HEIGHT%  %HEIGHT%    0.2084 0.0 0.0 0.0
+----- FRICTION
+@ ITPM0 ALAM0 ROU0
+      2   0.0 %ROUGHNESS%
+@ SF0 SDFJ0 ZFFJ0 ZFBJ0
+       .000 .000D+00  .000D+00        .000D+00
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@ SI0 P0 T0 G0 Q0 ICK00
+        0.0 0.0 0.0 %BYCO.MFR% 0.0 3
+@=======================================================================
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-BY
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.2084 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.2084 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0  0.0  %BYCO.MFR%   0.0     3
+@=======================================================================
+@ ANAMO
+K---- A1
+@ ITYPO FPARO ICMPO
+@ FPARO number of FA, should be 1.0!
+         21 1. 0
+----- NETWORK
+@ SN01 NI01
+       0.00   %NCV%
+       %HEIGHT%
+----- JUNTYPES
+@ ST0	JTYP0	ATYP0
+  0.0	3		A1-VALVE
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+@ !D0 corresponding to one pin, A0 to whole SA CSA
+        .00       .00    %D0_hydr% %A0_free% 0.0 0.0
+   %HEIGHT%  %HEIGHT%    %D0_hydr% %A0_free% 0.0 0.0
+----- FRICTION
+@ ITPM0 ALAM0 ROU0
+@       dummy
+      2 0.0   %ROUGHNESS%
+@ SF0 SDFJ0 ZFFJ0 ZFBJ0
+@ Form losses due to spacers
+       0.00        0.0        %ZETA%        %ZETA%
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@ SI0 P0 T0 G0 Q0 ICK00
+      0.0 0.0  0.0  %CH.MFR% 0.0 3
+     %HEIGHT% 0.0 0.0 %CH.MFR% 0.0 3
+@-----------------------------------------------------------------------
+@	ANAMO		
+K---- A2		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A2-VALVE
+@	ANAMO		
+K---- A3		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A3-VALVE
+@	ANAMO		
+K---- A4		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A4-VALVE
+@	ANAMO		
+K---- A5		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A5-VALVE
+@	ANAMO		
+K---- A6		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A6-VALVE
+@	ANAMO		
+K---- A7		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A7-VALVE
+@	ANAMO		
+K---- A8		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A8-VALVE
+@	ANAMO		
+K---- A9		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A9-VALVE
+@	ANAMO		
+K---- A10		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A10-VALVE
+@	ANAMO		
+K---- A11		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A11-VALVE
+@	ANAMO		
+K---- A12		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A12-VALVE
+@	ANAMO		
+K---- A13		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A13-VALVE
+@	ANAMO		
+K---- A14		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A14-VALVE
+@	ANAMO		
+K---- A15		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A15-VALVE
+@	ANAMO		
+K---- A16		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A16-VALVE
+@	ANAMO		
+K---- A17		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A17-VALVE
+@	ANAMO		
+K---- A18		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A18-VALVE
+@	ANAMO		
+K---- A19		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A19-VALVE
+@	ANAMO		
+K---- A20		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A20-VALVE
+@	ANAMO		
+K---- A21		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A21-VALVE
+@	ANAMO		
+K---- A22		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A22-VALVE
+@	ANAMO		
+K---- A23		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A23-VALVE
+@	ANAMO		
+K---- A24		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A24-VALVE
+@	ANAMO		
+K---- A25		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A25-VALVE
+@	ANAMO		
+K---- A26		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A26-VALVE
+@	ANAMO		
+K---- A27		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A27-VALVE
+@	ANAMO		
+K---- A28		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A28-VALVE
+@	ANAMO		
+K---- A29		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A29-VALVE
+@	ANAMO		
+K---- A30		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A30-VALVE
+@	ANAMO		
+K---- A31		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A31-VALVE
+@	ANAMO		
+K---- A32		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A32-VALVE
+@	ANAMO		
+K---- A33		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A33-VALVE
+@	ANAMO		
+K---- A34		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A34-VALVE
+@	ANAMO		
+K---- A35		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A35-VALVE
+@	ANAMO		
+K---- A36		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A36-VALVE
+@	ANAMO		
+K---- A37		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A37-VALVE
+@	ANAMO		
+K---- A38		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A38-VALVE
+@	ANAMO		
+K---- A39		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A39-VALVE
+@	ANAMO		
+K---- A40		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A40-VALVE
+@	ANAMO		
+K---- A41		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A41-VALVE
+@	ANAMO		
+K---- A42		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A42-VALVE
+@	ANAMO		
+K---- A43		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A43-VALVE
+@	ANAMO		
+K---- A44		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A44-VALVE
+@	ANAMO		
+K---- A45		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A45-VALVE
+@	ANAMO		
+K---- A46		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A46-VALVE
+@	ANAMO		
+K---- A47		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A47-VALVE
+@	ANAMO		
+K---- A48		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A48-VALVE
+@	ANAMO		
+K---- A49		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A49-VALVE
+@	ANAMO		
+K---- A50		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A50-VALVE
+@	ANAMO		
+K---- A51		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A51-VALVE
+@	ANAMO		
+K---- A52		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A52-VALVE
+@	ANAMO		
+K---- A53		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A53-VALVE
+@	ANAMO		
+K---- A54		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A54-VALVE
+@	ANAMO		
+K---- A55		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A55-VALVE
+@	ANAMO		
+K---- A56		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A56-VALVE
+@	ANAMO		
+K---- A57		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A57-VALVE
+@	ANAMO		
+K---- A58		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A58-VALVE
+@	ANAMO		
+K---- A59		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A59-VALVE
+@	ANAMO		
+K---- A60		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A60-VALVE
+@	ANAMO		
+K---- A61		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A61-VALVE
+@	ANAMO		
+K---- A62		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A62-VALVE
+@	ANAMO		
+K---- A63		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A63-VALVE
+@	ANAMO		
+K---- A64		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A64-VALVE
+@	ANAMO		
+K---- A65		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A65-VALVE
+@	ANAMO		
+K---- A66		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A66-VALVE
+@	ANAMO		
+K---- A67		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A67-VALVE
+@	ANAMO		
+K---- A68		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A68-VALVE
+@	ANAMO		
+K---- A69		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A69-VALVE
+@	ANAMO		
+K---- A70		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A70-VALVE
+@	ANAMO		
+K---- A71		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A71-VALVE
+@	ANAMO		
+K---- A72		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A72-VALVE
+@	ANAMO		
+K---- A73		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A73-VALVE
+@	ANAMO		
+K---- A74		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A74-VALVE
+@	ANAMO		
+K---- A75		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A75-VALVE
+@	ANAMO		
+K---- A76		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A76-VALVE
+@	ANAMO		
+K---- A77		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A77-VALVE
+@	ANAMO		
+K---- A78		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A78-VALVE
+@	ANAMO		
+K---- A79		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A79-VALVE
+@	ANAMO		
+K---- A80		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A80-VALVE
+@	ANAMO		
+K---- A81		
+@	ITYPO	FPARO	ICMPO
+	21	1.0	0
+COPY	A1		
+----- JUNTYPES		
+@	ST0	JTYP0	ATYP0
+	0.0	3	A81-VALVE
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A1
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A2
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A3
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A4
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A5
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A6
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A7
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A8
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A9
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A10
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A11
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A12
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A13
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A14
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A15
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A16
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A17
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A18
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A19
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A20
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A21
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A22
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A23
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A24
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A25
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A26
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A27
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A28
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A29
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A30
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A31
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A32
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A33
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A34
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A35
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A36
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A37
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A38
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A39
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A40
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A41
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A42
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A43
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A44
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A45
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A46
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A47
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A48
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A49
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A50
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A51
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A52
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A53
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A54
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A55
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A56
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A57
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A58
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A59
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A60
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A61
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A62
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A63
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A64
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A65
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A66
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A67
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A68
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A69
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A70
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A71
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A72
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A73
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A74
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A75
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A76
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A77
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A78
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A79
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A80
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0 0.0  %CH.MFR%   0.0     3
+@-----------------------------------------------------------------------
+@ ANAMO
+K---- V-A81
+@ ITYPO FPARO ICMPO
+     21 1.0  0
+----- NETWORK
+@ SN01 NI01
+       0.0   1
+       0.1
+----- GEOMETRY
+@ SG0 Z0 D0 F0 V0 DEPO
+       0.0   %HEIGHT% 0.1076 0.0 0.0 0.0
+       0.1  %HEIGHT%+0.1 0.1076 0.0 0.0 0.0
+----- DRIFT
+@ S01 JFLO0 JDRIFT
+        0.0 2 1
+----- INITCOND
+@  SI0         P0         T0         G0         Q0    ICK0
+   0.0    0.0  0.0  %CH.MFR%   0.0     3

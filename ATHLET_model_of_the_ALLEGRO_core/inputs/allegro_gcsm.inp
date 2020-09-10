@@ -1,0 +1,292 @@
+C---- GCSM
+@======================================================
+@======================== PROCESS SIGNALS =============
+@ COMMENT
+@ YNAME VARTYPE OBJECTNAME MODELNAME SPVO
+@
+S---- PROBLEM-TIME
+  PROB.TIME TIME - - 0.0
+@
+@******************* REACTOR **************************
+@
+S---- CORE TOTAL POWER
+      POWER COREPOWER - - 1.0
+S---- CORE INLET PRESSURE
+    CORE.PI PRESSURE V-LP - 0.8255
+S---- CORE FLUID'S INLET TEMP.
+    CORE.TI FLUIDTEMP V-LP - 0.8255
+S---- CORE OUTLET PRESSURE
+    CORE.PO PRESSURE V-UP - 0.000 @2.0B
+S---- CORE FLUID'S OUTLET TEMP.
+    CORE.TO FLUIDTEMP V-UP - 0.000 @2.0B
+@
+S---- CO-BY.DI
+   CO-BY.DI DENSITY CORE-BY - 0.0
+@*****************OUTLET TEMPERATURES
+S---- R1.T				
+	R1.T	FLUIDTEMP	V-A33	-	0.0
+S---- R2.T				
+	R2.T	FLUIDTEMP	V-A16	-	0.0
+S---- R3.T				
+	R3.T	FLUIDTEMP	V-A8	-	0.0
+S---- R4.T				
+	R4.T	FLUIDTEMP	V-A2	-	0.0
+S---- BY.MFR
+	BY.MFR	MASSFLOW	CORE-BY	-	0.0
+@*****************PRESSURE SETUP
+S---- PRESSURE INLET
+	PRESS.IN PRESSURE V-LP - 0.000
+S---- CORE OUTLET PRESSURE
+	PRESS.OUT PRESSURE V-UP - 0.000
+@#################################################################
+@======================== CONTROL SIGNALS ========================
+@#################################################################
+@***** CONTROL FOR BLOCKS *****
+----- BL-CONTROL
+@ IPRI ICB INTEK DTMAX
+          0 2 1 -4.0
+@#################################################################
+S---- T-HMAX: MAX TIME STEP FOR CW INTEGRAT
+     T-HMAX FUNGEN PROB.TIME - T.HMAX -
+         -1 1.0 0.0 0.0 0.0 0.0
+S---- T-PRINT
+    T-PRINT FUNGEN PROB.TIME - T.PRINT -
+         -1 1.0 0.0 0.0 0.0 0.0
+@*****************START OF TRANSIENT
+S---- BEGINNING OF TRANSIENT
+      START SWITCH PROB.TIME - - -
+          0 1.0 %START.BEG% 0. 0. 0.
+@-----------------------------------------------------------------
+@********** ZT-CONTROL REACTOR'S INPUT PRESSURE AND PRZ LEVEL ****
+@-----------------------------------------------------------------
+S---- BOX1.P
+     BOX1.P ADDER - - - -
+          0 %REAC.P% 1.0 0.0 0.0 0.0
+S---- BOX1.T
+     BOX1.T ADDER - - - -
+          0 %REAC.T% 1.0 0.0 0.0 0.0
+S---- BOX1.H
+     BOX1.H PROP BOX1.P BOX1.T - -
+@ For Helium         A2=3	 
+          4 1.0 2.0 3.0 0.0 0.0
+S---- J-LP.H
+   J-LP.H ADDER BOX1.H - - -
+          0 1.0 1.0 0.0 0.0 0.0
+S---- MFR0 
+   MFR0 ADDER - - - -
+          0 %REAC.MFR% 1.0 0.0 0.0 0.0
+@ TODO: modify to simulate ULOF
+S---- FUNCTION OF MASS FLOW RATE TABLE
+  MFRFN    FUNGEN    PROB.TIME   START    -        MF.TBL
+     -1    1.0000E+00  0.0000E+00 0.0000E+00 0.0000E+00 0.0000E+00
+S---- J-LP.G 
+	J-LP.G 	MULDIV	MFRFN	MFR0	-	-
+	0 1.0	0.0	0.0	0.0	0.0
+@-----------------------------------------------------------------
+S---- BOX2.P
+     BOX2.P ADDER - - - -
+          0 %REAC.PN% 1.0 0.0 0.0 0.0
+S---- BOX2.T
+     BOX2.T ADDER - - - -
+          0 %REAC.TO% 1.0 0.0 0.0 0.0
+S---- BOX2.H
+@ For Helium         A2=3
+     BOX2.H PROP BOX2.P BOX2.T - -
+          4 1.0 2.0 3.0 0.0 0.0
+@-----------------------------------------------------------------
+@********** VALVE CONTROL FOR GAGGING SETUP - MASS FLOW DISTR*****
+@-----------------------------------------------------------------
+@ BASIC=1.0, means open valve
+S---- BASIC-1					
+	BASIC-1	ADDER	-	-	-	-
+	0	1.0	1.0	0.0	0.0	0.0
+@ R4 control
+S---- SWITCH-R4
+	SWITCH-R4 	SWITCH 		PROB.TIME 	- 		-	 	-
+	0 		1.0 	0.0		0.0		0.0		0.0
+S---- R4-DIFF					
+	R4-DIFF	ADDER	'R4.T'	-	-	-
+	0	1.0	1.0	-%REAC.TO%	0.0	0.0
+S---- R4-PID					
+	R4-PID	PIDT1	'R4-DIFF'	-	-	-
+	0	1.0	1.0D-3	100.0	0.0	0.0
+S---- R4-PID-SHIFT
+	R4-PID-SHIFT	ADDER	'R4-PID'	-	-	-
+	0	1.0	1.0	%R4.RATE%	0.0	0.0
+@S---- R4-REL
+@	R4-REL	LIMITER	R4-PID-SHIFT	-	-	-
+@	0	1.0	0.1	1.0		0.0		0.0
+S---- R4-REL
+	R4-REL	ADDER	-	-	-	-
+	0	1.0	%R4.RATE%	0.0		0.0		0.0
+@ R3 control
+S---- SWITCH-R3
+	SWITCH-R3 	SWITCH 		PROB.TIME 	- 		-	 	-
+	0 		1.0 	0.0		0.0		0.0		0.0
+S---- R3-DIFF					
+	R3-DIFF	ADDER	'R3.T'	-	-	-
+	0	1.0	1.0	-%REAC.TO%	0.0	0.0
+S---- R3-PID					
+	R3-PID	PIDT1	'R3-DIFF'	-	-	-
+	0	1.0	1.0D-3	100.0	0.0	0.0
+S---- R3-PID-SHIFT
+	R3-PID-SHIFT	ADDER	'R3-PID'	-	-	-
+	0	1.0	1.0	%R3.RATE%	0.0	0.0
+@S---- R3-REL
+@	R3-REL	LIMITER	R3-PID-SHIFT	-	-	-
+@	0	1.0	0.1	1.0		0.0		0.0
+S---- R3-REL
+	R3-REL	ADDER	-	-	-	-
+	0	1.0	%R3.RATE%	0.0		0.0		0.0
+@ R2 control
+S---- SWITCH-R2
+	SWITCH-R2 	SWITCH 		PROB.TIME 	- 		-	 	-
+	0 		1.0 	0.0		0.0		0.0		0.0
+S---- R2-DIFF					
+	R2-DIFF	ADDER	'R2.T'	-	-	-
+	0	1.0	1.0	-%REAC.TO%	0.0	0.0
+S---- R2-PID					
+	R2-PID	PIDT1	'R2-DIFF'	-	-	-
+	0	0.1	1.0D-3	100.0	0.0	0.0
+S---- R2-PID-SHIFT
+	R2-PID-SHIFT	ADDER	'R2-PID'	-	-	-
+	0	1.0	1.0	%R2.RATE%	0.0	0.0
+@S---- R2-REL
+@	R2-REL	LIMITER	R2-PID-SHIFT	-	-	-
+@	0	1.0	0.1	1.0		0.0		0.0
+S---- R2-REL
+	R2-REL	ADDER	-	-	-	-
+	0	1.0	%R2.RATE%	0.0		0.0		0.0
+@ R1 control
+S---- R1-DIFF					
+	R1-DIFF	ADDER	'R1.T'	-	-	-
+	0	1.0	1.0	-%REAC.TO%	0.0	0.0
+S---- R1-REL
+	R1-REL	ADDER	-	-	-	-
+	0	1.0	1.0	0.0	0.0	0.0
+@ BY control
+S---- SWITCH-BY
+	SWITCH-BY 	SWITCH 		PROB.TIME 	- 		-	 	-
+	0 		1.0 	0.0		0.0		0.0		0.0
+S---- BY-DIFF					
+	BY-DIFF	ADDER	'BY.MFR'	-	-	-
+	0	1.0	1.0	-%BYCO.MFR%	0.0	0.0
+S---- BY-PID					
+	BY-PID	PIDT1	'BY-DIFF'	-	-	-
+	0	1.0	1.0D-3	100.0	0.0	0.0
+S---- BY-PID-SHIFT
+	BY-PID-SHIFT	ADDER	'BY-PID'	-	-	-
+	0	1.0	-1.0	%BY.RATE%	0.0	0.0
+@S---- BY-REL
+@	BY-REL	LIMITER	BY-PID-SHIFT	-	-	-
+@	0	1.0	0.1	1.0		0.0		0.0
+S---- BY-REL
+	BY-REL	ADDER	-	-	-	-
+	0	1.0	%BY.RATE%	0.0		0.0		0.0
+@ CORE PRESSURE DROP control
+S---- SWITCH-PRESS
+	SWITCH-PRESS 	SWITCH 		PROB.TIME 	- 		-	 	-
+	0 		1.0 	0.0		0.0		0.0		0.0
+S---- PRESS-DIFF					
+	PRESS-DIFF	ADDER	'PRESS.IN'	'PRESS.OUT'	-	-
+	0	1.0	1.0	-1.0	-%PRESS.DROP%	0.0
+S---- PRESS-PID					
+	PRESS-PID	PIDT1	'PRESS-DIFF'	-	-	-
+	0	1.0	1.0D-3	100.0	0.0	0.0
+S---- PRESS-PID-SHIFT
+	PRESS-PID-SHIFT	ADDER	'PRESS-PID'	-	-	-
+	0	1.0	-1.0	1.0	0.0	0.0
+S---- PRESS-REL
+	PRESS-REL	LIMITER	PRESS-PID-SHIFT	-	-	-
+	0	1.0	0.1	1.0		0.0		0.0
+@=======================================================================
+@-----------------------------------------------------------------
+@********** MAXIMUM TEMPERATURES*****
+@-----------------------------------------------------------------
+S---- MAX Right side Temperatures
+	MAXRSURF	LIBRARY	-	-	-	-
+	10			1.0		0.0	0.0	0.0	0.0
+C---- POSTPRO
+K---- MAXRSURF
+	8
+	HA1
+	HA2
+	HA3
+	HA4
+	HA5
+	HA6
+	HA7
+	HA8
+	HA9
+	HA10
+	HA11
+	HA12
+	HA13
+	HA14
+	HA15
+	HA16
+	HA17
+	HA18
+	HA19
+	HA20
+	HA21
+	HA22
+	HA23
+	HA24
+	HA25
+	HA26
+	HA27
+	HA28
+	HA29
+	HA30
+	HA31
+	HA32
+	HA33
+	HA34
+	HA35
+	HA36
+	HA37
+	HA38
+	HA39
+	HA40
+	HA41
+	HA42
+	HA43
+	HA44
+	HA45
+	HA46
+	HA47
+	HA48
+	HA49
+	HA50
+	HA51
+	HA52
+	HA53
+	HA54
+	HA55
+	HA56
+	HA57
+	HA58
+	HA59
+	HA60
+	HA61
+	HA62
+	HA63
+	HA64
+	HA65
+	HA66
+	HA67
+	HA68
+	HA69
+	HA70
+	HA71
+	HA72
+	HA73
+	HA74
+	HA75
+	HA76
+	HA77
+	HA78
+	HA79
+	HA80
+	HA81

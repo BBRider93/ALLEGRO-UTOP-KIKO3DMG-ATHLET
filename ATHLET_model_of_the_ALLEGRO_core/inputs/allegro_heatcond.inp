@@ -1,0 +1,845 @@
+C---- HEATCOND @ 22A
+@=======================================================================
+@
+@ IHV IOPTHC
+       1 3
+@
+@ HECONV TFCONF
+   1.D-2 1.D-2
+@
+@ IPOL    IHTC IQAXH: Controls simulation of the axial heat conduction inside HCOs
+   1       1
+@
+@========================================================================
+@ O V E R V I E W  OF  H E A T C O N D U C T O R O B J E C T S
+@========================================================================
+@********* HEAT OBJECTS NAMES FOR REACTOR ******
+@===============================================
+     'HA1'
+     'HA2'
+     'HA3'
+     'HA4'
+     'HA5'
+     'HA6'
+     'HA7'
+     'HA8'
+     'HA9'
+     'HA10'
+     'HA11'
+     'HA12'
+     'HA13'
+     'HA14'
+     'HA15'
+     'HA16'
+     'HA17'
+     'HA18'
+     'HA19'
+     'HA20'
+     'HA21'
+     'HA22'
+     'HA23'
+     'HA24'
+     'HA25'
+     'HA26'
+     'HA27'
+     'HA28'
+     'HA29'
+     'HA30'
+     'HA31'
+     'HA32'
+     'HA33'
+     'HA34'
+     'HA35'
+     'HA36'
+     'HA37'
+     'HA38'
+     'HA39'
+     'HA40'
+     'HA41'
+     'HA42'
+     'HA43'
+     'HA44'
+     'HA45'
+     'HA46'
+     'HA47'
+     'HA48'
+     'HA49'
+     'HA50'
+     'HA51'
+     'HA52'
+     'HA53'
+     'HA54'
+     'HA55'
+     'HA56'
+     'HA57'
+     'HA58'
+     'HA59'
+     'HA60'
+     'HA61'
+     'HA62'
+     'HA63'
+     'HA64'
+     'HA65'
+     'HA66'
+     'HA67'
+     'HA68'
+     'HA69'
+     'HA70'
+     'HA71'
+     'HA72'
+     'HA73'
+     'HA74'
+     'HA75'
+     'HA76'
+     'HA77'
+     'HA78'
+     'HA79'
+     'HA80'
+     'HA81'
+@=======================================================================
+@********* REACTOR ***********************************************
+@=======================================================================
+@ ANAMH
+K---- HA1
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+    ADIABAT 0.0 0.0 A1 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+      1   4  2   0    2     1      RA1    -1      0
+----- GEOMETRY
+@ FPARH TLO
+      %NROD% %PITCH%
+@   SG0			ZO			DI0	DS10	GAP10	DS20	GAP20	DS30
+	0.0			0.00		0.0	%RODw%	%GAPw%	%CLADw%	0.0		0.0
+	%HEIGHT%	%HEIGHT%	0.0	%RODw%	%GAPw%	%CLADw%	0.0		0.0
+----- HTCDEF
+@ AIAL  (1         2       3     4)
+      HTCL      HTCGAP HTCCALC DUMMY
+@ SH0 HTCL0(1         2       3     4) QTHRU
+  0.0     0.0 %HTCGAPm%  4.0D+4   0.0    0.0
+----- MATPROP
+@ AMATLO(1        3     3)
+       CPLMOXMM CPLCLADM DUMMY
+----- GAPCON
+@	ANGAS (I) XGAS (I) Mole fraction of component
+	HELIUM	1
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA2
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A2 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA2	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA3
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A3 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA3	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA4
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A4 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA4	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA5
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A5 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA5	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA6
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A6 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA6	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA7
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A7 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA7	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA8
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A8 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA8	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA9
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A9 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA9	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA10
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A10 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA10	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA11
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A11 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA11	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA12
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A12 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA12	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA13
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A13 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA13	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA14
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A14 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA14	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA15
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A15 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA15	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA16
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A16 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA16	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA17
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A17 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA17	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA18
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A18 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA18	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA19
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A19 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA19	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA20
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A20 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA20	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA21
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A21 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA21	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA22
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A22 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA22	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA23
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A23 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA23	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA24
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A24 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA24	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA25
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A25 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA25	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA26
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A26 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA26	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA27
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A27 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA27	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA28
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A28 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA28	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA29
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A29 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA29	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA30
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A30 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA30	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA31
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A31 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA31	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA32
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A32 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA32	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA33
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A33 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA33	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA34
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A34 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA34	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA35
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A35 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA35	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA36
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A36 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA36	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA37
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A37 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA37	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA38
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A38 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA38	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA39
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A39 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA39	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA40
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A40 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA40	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA41
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A41 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA41	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA42
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A42 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA42	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA43
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A43 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA43	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA44
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A44 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA44	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA45
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A45 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA45	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA46
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A46 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA46	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA47
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A47 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA47	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA48
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A48 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA48	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA49
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A49 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA49	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA50
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A50 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA50	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA51
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A51 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA51	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA52
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A52 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA52	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA53
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A53 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA53	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA54
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A54 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA54	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA55
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A55 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA55	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA56
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A56 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA56	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA57
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A57 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA57	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA58
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A58 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA58	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA59
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A59 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA59	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA60
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A60 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA60	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA61
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A61 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA61	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA62
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A62 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA62	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA63
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A63 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA63	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA64
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A64 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA64	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA65
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A65 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA65	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA66
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A66 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA66	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA67
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A67 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA67	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA68
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A68 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA68	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA69
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A69 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA69	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA70
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A70 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA70	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA71
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A71 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA71	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA72
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A72 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA72	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA73
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A73 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA73	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA74
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A74 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA74	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA75
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A75 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA75	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA76
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A76 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA76	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA77
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A77 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA77	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA78
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A78 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA78	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA79
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A79 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA79	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA80
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A80 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA80	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@-----------------------------------------------------------------------
+@ ANAMH
+K---- HA81
+@ AOLH SBOLH SEOLH AORH SBORH SEORH
+	ADIABAT 0.0 0.0 A81 0.0 %HEIGHT%
+@ NIHCO N10 N20 N30 IGEO0 ICOMP0 ACOMP0 ICHF0 IPRPLO
+	  1   4  2   0	2	 1	  RA81	-1	  0
+COPY HA1
+EXCEPT_FPARH %NROD%
+@=======================================================================

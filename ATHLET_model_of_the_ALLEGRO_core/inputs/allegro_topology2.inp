@@ -1,0 +1,669 @@
+C---- TOPOLOGY
+@=======================================================================
+@=================================================
+@ PC FOR REACTOR
+@=================================================
+@=================================================
+@ PRIMARY CIRCUIT FOR LOOP N1, ONLY REACTOR
+@=================================================
+----- C-A1
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'J-LP' 1.0   2
+       0.0 'V-LP' 0.0   2
+       0.0 'A1' %HEIGHT%  2
+       0.0 'V-A1' 0.1   2
+       0.0 'V-UP' 0.0   2
+----- C-A2
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A2' %HEIGHT% 2
+       0.0 'V-A2' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A3
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A3' %HEIGHT% 2
+       0.0 'V-A3' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A4
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A4' %HEIGHT% 2
+       0.0 'V-A4' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A5
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A5' %HEIGHT% 2
+       0.0 'V-A5' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A6
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A6' %HEIGHT% 2
+       0.0 'V-A6' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A7
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A7' %HEIGHT% 2
+       0.0 'V-A7' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A8
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A8' %HEIGHT% 2
+       0.0 'V-A8' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A9
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A9' %HEIGHT% 2
+       0.0 'V-A9' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A10
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A10' %HEIGHT% 2
+       0.0 'V-A10' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A11
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A11' %HEIGHT% 2
+       0.0 'V-A11' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A12
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A12' %HEIGHT% 2
+       0.0 'V-A12' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A13
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A13' %HEIGHT% 2
+       0.0 'V-A13' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A14
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A14' %HEIGHT% 2
+       0.0 'V-A14' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A15
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A15' %HEIGHT% 2
+       0.0 'V-A15' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A16
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A16' %HEIGHT% 2
+       0.0 'V-A16' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A17
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A17' %HEIGHT% 2
+       0.0 'V-A17' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A18
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A18' %HEIGHT% 2
+       0.0 'V-A18' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A19
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A19' %HEIGHT% 2
+       0.0 'V-A19' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A20
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A20' %HEIGHT% 2
+       0.0 'V-A20' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A21
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A21' %HEIGHT% 2
+       0.0 'V-A21' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A22
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A22' %HEIGHT% 2
+       0.0 'V-A22' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A23
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A23' %HEIGHT% 2
+       0.0 'V-A23' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A24
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A24' %HEIGHT% 2
+       0.0 'V-A24' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A25
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A25' %HEIGHT% 2
+       0.0 'V-A25' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A26
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A26' %HEIGHT% 2
+       0.0 'V-A26' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A27
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A27' %HEIGHT% 2
+       0.0 'V-A27' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A28
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A28' %HEIGHT% 2
+       0.0 'V-A28' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A29
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A29' %HEIGHT% 2
+       0.0 'V-A29' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A30
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A30' %HEIGHT% 2
+       0.0 'V-A30' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A31
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A31' %HEIGHT% 2
+       0.0 'V-A31' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A32
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A32' %HEIGHT% 2
+       0.0 'V-A32' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A33
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A33' %HEIGHT% 2
+       0.0 'V-A33' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A34
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A34' %HEIGHT% 2
+       0.0 'V-A34' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A35
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A35' %HEIGHT% 2
+       0.0 'V-A35' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A36
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A36' %HEIGHT% 2
+       0.0 'V-A36' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A37
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A37' %HEIGHT% 2
+       0.0 'V-A37' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A38
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A38' %HEIGHT% 2
+       0.0 'V-A38' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A39
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A39' %HEIGHT% 2
+       0.0 'V-A39' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A40
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A40' %HEIGHT% 2
+       0.0 'V-A40' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A41
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A41' %HEIGHT% 2
+       0.0 'V-A41' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A42
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A42' %HEIGHT% 2
+       0.0 'V-A42' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A43
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A43' %HEIGHT% 2
+       0.0 'V-A43' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A44
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A44' %HEIGHT% 2
+       0.0 'V-A44' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A45
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A45' %HEIGHT% 2
+       0.0 'V-A45' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A46
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A46' %HEIGHT% 2
+       0.0 'V-A46' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A47
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A47' %HEIGHT% 2
+       0.0 'V-A47' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A48
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A48' %HEIGHT% 2
+       0.0 'V-A48' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A49
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A49' %HEIGHT% 2
+       0.0 'V-A49' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A50
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A50' %HEIGHT% 2
+       0.0 'V-A50' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A51
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A51' %HEIGHT% 2
+       0.0 'V-A51' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A52
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A52' %HEIGHT% 2
+       0.0 'V-A52' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A53
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A53' %HEIGHT% 2
+       0.0 'V-A53' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A54
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A54' %HEIGHT% 2
+       0.0 'V-A54' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A55
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A55' %HEIGHT% 2
+       0.0 'V-A55' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A56
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A56' %HEIGHT% 2
+       0.0 'V-A56' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A57
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A57' %HEIGHT% 2
+       0.0 'V-A57' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A58
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A58' %HEIGHT% 2
+       0.0 'V-A58' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A59
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A59' %HEIGHT% 2
+       0.0 'V-A59' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A60
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A60' %HEIGHT% 2
+       0.0 'V-A60' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A61
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A61' %HEIGHT% 2
+       0.0 'V-A61' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A62
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A62' %HEIGHT% 2
+       0.0 'V-A62' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A63
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A63' %HEIGHT% 2
+       0.0 'V-A63' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A64
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A64' %HEIGHT% 2
+       0.0 'V-A64' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A65
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A65' %HEIGHT% 2
+       0.0 'V-A65' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A66
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A66' %HEIGHT% 2
+       0.0 'V-A66' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A67
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A67' %HEIGHT% 2
+       0.0 'V-A67' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A68
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A68' %HEIGHT% 2
+       0.0 'V-A68' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A69
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A69' %HEIGHT% 2
+       0.0 'V-A69' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A70
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A70' %HEIGHT% 2
+       0.0 'V-A70' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A71
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A71' %HEIGHT% 2
+       0.0 'V-A71' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A72
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A72' %HEIGHT% 2
+       0.0 'V-A72' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A73
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A73' %HEIGHT% 2
+       0.0 'V-A73' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A74
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A74' %HEIGHT% 2
+       0.0 'V-A74' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A75
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A75' %HEIGHT% 2
+       0.0 'V-A75' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A76
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A76' %HEIGHT% 2
+       0.0 'V-A76' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A77
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A77' %HEIGHT% 2
+       0.0 'V-A77' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A78
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A78' %HEIGHT% 2
+       0.0 'V-A78' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A79
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A79' %HEIGHT% 2
+       0.0 'V-A79' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A80
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A80' %HEIGHT% 2
+       0.0 'V-A80' 0.1   2
+       0.0 'V-UP' 0.0 2
+----- C-A81
+@ IPRIO ISYSO
+        1 1
+@ SBO ANAMO SEO IARTO
+       0.0 'V-LP' 0.0 2
+       0.0 'A81' %HEIGHT% 2
+       0.0 'V-A81' 0.1   2
+       0.0 'V-UP' 0.0 2
+@=================================================
+@ BYPASS IN REACTOR
+@=================================================
+----- CORE-BY
+@ IPRI0 ISYS0
+           1 1
+@ SB0O(I) ANAMO(I) SEO0(I) IARTO(I)
+         0.0 'V-LP' 0.0 2
+         0.0 'CORE-BY' %HEIGHT% 2
+         0.0 'V-BY' 0.1   2
+         0.0 'V-UP' 0.0 2
+@=======================================================================

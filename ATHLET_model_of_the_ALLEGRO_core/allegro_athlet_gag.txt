@@ -1,0 +1,166 @@
+PRINT ON
+C---- HEADER
+@=======================================================================
+                    75 MWth ALLEGRO MOX Core
+					ONLY CORE
+                    81 assemblies
+@=======================================================================
+@ INPUT DECK FOR ATHLET
+@=======================================================================
+@ BASE INPUT DECK
+@=======================================================================
+@
+@ 10.10.2013
+@
+@=======================================================================
+C---- CONTROL
+@ DTPRIN ISPRIN INPPRN IPLPRN IGRPRN DTPLOT ISPLOT SGPLOT ITPLOT
+  1000.00 -1 3 1 1 0.1 100 'DEFAULT' 0
+@
+@ MZEIT MCPU ICPUTM MIZS TE SGEND
+     600 0 0 0 3.0E+2 'DEFAULT'
+@
+@ IWBER IPUNC ISREST
+       0 2 0
+@
+@ TPNTWR(I)
+    850. 950. 980. 1400. 1800.
+& 2000. 2100. 2200. 2300. 2400. 2500. 2600. 2700. 2800. 2900.
+@=======================================================================
+----- ZEROTRANS
+@ T0TRNS IG0TRN TG0TRN IF0TRN IZETA0
+     100.0 0 0. 0 0
+----- PARALLEL
+@ MTHRDS
+     4
+@ JUNKD JUNKH
+     1   16
+@=======================================================================
+C---- PARAMETERS
+@=======================================================================
+@=======================================================================
+@ REACTOR
+@=======================================================================
+@
+@ POWER
+   POWER.N= 7.500D+07 @ NOMINAL REACTOR POWER IN (75 MW) 7.500D+07
+@ PRESSURE, Temperature
+   REAC.P=70.D+5 @ Initial reactor pressure SS (70 bar)
+   REAC.PN=69.2D+5 @ Outlet reactor pressure SS (70 bar)
+   REAC.T=260. @ Core inlet temp 260
+   REAC.TO=530. @ Core outlet temp 530
+   PRESS.DROP= %REAC.P%-%REAC.PN%
+@ Geometry
+   NASS=81. @ # of assemblies
+   NROD=169. @ # of fuel pins
+   TOTRODS=%NASS%*%NROD%
+   NCV = 5      @ # of control volumes for parallel channels
+   HEIGHT = 0.8628632975
+   RODw= 2.71D-03 @ 2.735D-03
+   GAPw= 1.2D-04 @ 1.166D-04
+   CLADw= 5.1D-04 @ 5.134D-04
+   PITCH= 0.8D-2
+   D0_hydr= 3.359D-03 @original: 6.730D-03 mod to pressure: 2.730D-03
+   A0_free= 3.591D-03
+@ TH data
+   HTCGAPm= 2635.0
+   ROUGHNESS= 3.00D-05
+   ZETA= 4.8D+05
+   ZETAvalve= 500.0
+@ Mass Flow Rate
+   REAC.MFR=56.45 @ NOMINAL M.F.R. FOR REACTOR IN (KG/S)
+   BYCO.MFR=0.05*%REAC.MFR% @ NOMINAL M.F.R. FOR CORE'S BYPASS(5%) IN (KG/S)
+   CORE.MFR=%REAC.MFR%-%BYCO.MFR% @ NOMINAL M.F.R. FOR CORE IN (KG/S)
+   CH.MFR=%CORE.MFR%/%NASS% @ NOMINAL M.F.R. FOR channel IN (KG/S)
+@ Power
+   POWER.ROD=%POWER.N%/%TOTRODS%
+@ GCSM
+   START.BEG=2200. @ START ULOF, SET HIGH IF NOT NEEDED
+   R1.RATE= 1.0
+   R2.RATE= 0.68883
+   R3.RATE= 0.493
+   R4.RATE= 0.411
+   BY.RATE= 0.317944
+@=======================================================================
+INCLUDE inputs/allegro_topology2.inp
+@=======================================================================
+INCLUDE inputs/allegro_object_valves.txt
+@=======================================================================
+INCLUDE inputs/allegro_valves.txt
+@=======================================================================
+C---- WORKFLUID
+@  ISYSW   AFLUID
+    1      HELIUM
+@=======================================================================
+C---- OBJECTCON
+@ IPRIN IEXT
+          3 1
+@=======================================================================
+C---- TIMEDEPVOL
+@
+K---- V-UP
+@ SGPRESS SGENT
+     BOX2.P BOX2.H
+@=======================================================================
+C---- FILL @ 2A
+@ AFILL
+K---- J-LP.F
+@ SGFLOW SGENTH
+ 'J-LP.G' 'J-LP.H'
+@=======================================================================
+C---- INTEGRAT @ 22A
+@=======================================================================
+@
+@ H0      T       EPS     ECKS    GRESCH
+  2.0D-05 0.0D+00 1.0D-03 1.0D-06 1.0D-09
+@
+@ HMAX    SGHMAX   DTAV    IFTRIX IGFTRX ISFTRX I2MFTRX ITYPTS IOTS
+@                                          must be 0 
+  0.5D+0  'T-HMAX' 1.D-5   0      0      0      0       0      1
+
+@
+@ T11(I)
+      0.0 0.0 0.0 0.0 0.0 0.0
+@
+@ TOEXP  TOIMP  TOFTX  TOEIG  TOFKT  TOJAC
+  1.D+10 1.D+10 1.D+10 1.D+10 1.D+10 1.D+10
+@
+K---- DRUFAN
+@ FCLIMP  FCLIMH  FCLIMT  FCLIMG  FCLIMA  FCLIMU  FCLIMWL FCLIM
+  1.0D+00 1.0D-00 1.0D-01 1.0D-01 1.0D-01 1.0D+00 1.0D-00 1.0D-00
+@
+@ P H G X
+        T T T T
+@
+@=======================================================================
+C---- MISCELLAN @ 2A
+@=======================================================================
+@
+K---- DRUFAN
+@
+@ AA BB CC DD EE FF GG OO PP QQ
+    900.0 0. 0. 0. 0. 0. 1. 0. 0. 0.
+@
+@=======================================================================
+INCLUDE inputs/allegro_heatcond.inp
+@=======================================================================
+INCLUDE inputs/allegro_rod.inp
+@=======================================================================
+INCLUDE inputs/allegro_neukin3D.inp
+@======================================================
+C---- NEUKINP
+@=======================================================================
+@ ITPRINT DTNK
+          0 0.
+@=======================================================================
+INCLUDE inputs/allegro_gcsm.inp
+@=======================================================================
+C---- REDEFINE
+@=======================================================================
+@ ANAMO
+----- CORE-BY
+@ AVAR IND IVAL LVAL RVAL KEY
+  JDPA 1 0 T 0.0 0
+@=======================================================================
+INCLUDE inputs/allegro_tables.inp
+@=======================================================================
