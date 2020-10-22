@@ -1,0 +1,694 @@
+set	title	"ALLEGRO_GC_parameter"																																													
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% COOLANT pin			%
+% cool					%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pin cool
+	COOLNOM	0.273515498
+	COOLNOM
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% PIN - FUEL mode		%
+% pinf600				%
+% pinf900				%
+% pinf1200				%
+% pinf1500				%
+% pinf1800				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pin pinf600
+	MOX600	0.271705694
+	INGAS
+
+pin pinf900
+	MOX900	0.272610596
+	INGAS
+	
+pin pinf1200
+	MOX1200	0.273515498
+	INGAS
+
+pin pinf1500
+	MOX1500	0.2744204
+	INGAS
+
+pin pinf1800
+	MOX1800	0.275325302
+	INGAS
+
+% pin pinf2500
+% 	MOX2500	0.277436739
+% 	INGAS
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% PIN - CLAD mode		%
+% pinc600				%
+% pinc900				%
+% pinc1200				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pin pinc600
+	fill pinf1200	0.285176475
+	CLAD600			0.336515628
+	COOLNOM
+
+pin pinc900
+	fill pinf1200	0.286602357
+	CLAD900			0.338198206
+	COOLNOM
+	
+pin pinc1200
+	fill pinf1200	0.288028240
+	CLAD1200		0.339880784
+	COOLNOM
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% FUEL LATTICE			%
+% fuellat				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+lat	fuellat	2	0	0	17	17	0.8																				
+	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool										
+	cool	cool	cool	cool	cool	cool	cool	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool										
+	cool	cool	cool	cool	cool	cool	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool										
+	cool	cool	cool	cool	cool	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool										
+	cool	cool	cool	cool	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool										
+	cool	cool	cool	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool										
+	cool	cool	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool										
+	cool	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool										
+	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool										
+	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool	cool										
+	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool	cool	cool										
+	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool	cool	cool	cool										
+	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool	cool	cool	cool	cool										
+	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool	cool	cool	cool	cool	cool										
+	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool	cool	cool	cool	cool	cool	cool										
+	cool	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	pinc600	cool	cool	cool	cool	cool	cool	cool	cool										
+	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool										
+																											
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% HEX - FUEL			%
+% hexFw600				%
+% hexFw900				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+surf	surfw600in	hexyc	0	0	5.3007558
+surf	surfw600ou	hexyc	0	0	5.502114045
+surf	surfw900in	hexyc	0	0	5.327259579
+surf	surfw900ou	hexyc	0	0	5.529624615
+
+cell cellFw600a hexFw600 fill fuellat -surfw600in
+cell cellFw600b hexFw600 WRAP600 surfw600in -surfw600ou
+cell cellFw600c hexFw600 COOLNOM surfw600ou
+
+cell cellFw900a hexFw900 fill fuellat -surfw900in
+cell cellFw900b hexFw900 WRAP900 surfw900in -surfw900ou
+cell cellFw900c hexFw900 COOLNOM surfw900ou
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% GAS Exp pin			%
+% ping600				%
+% ping900				%
+% ping1200				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pin ping600
+	INGAS	0.285176475
+	CLAD600	0.336515628
+	COOLNOM
+	
+pin ping900
+	INGAS	0.286602357
+	CLAD900	0.338198206
+	COOLNOM
+	
+pin ping1200
+	INGAS		0.288028240
+	CLAD1200	0.339880784
+	COOLNOM
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% GAS Exp LATTICE		%
+% gaslat				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+lat	gaslat	2	0	0	17	17	0.8																				
+	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool										
+	cool	cool	cool	cool	cool	cool	cool	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool										
+	cool	cool	cool	cool	cool	cool	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool										
+	cool	cool	cool	cool	cool	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool										
+	cool	cool	cool	cool	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool										
+	cool	cool	cool	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool										
+	cool	cool	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool										
+	cool	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool										
+	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool										
+	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool	cool										
+	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool	cool	cool										
+	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool	cool	cool	cool										
+	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool	cool	cool	cool	cool										
+	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool	cool	cool	cool	cool	cool										
+	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool	cool	cool	cool	cool	cool	cool										
+	cool	ping600	ping600	ping600	ping600	ping600	ping600	ping600	ping600	cool	cool	cool	cool	cool	cool	cool	cool										
+	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool	cool										
+																											
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% HEX - GAS EXP			%
+% hexGw600				%
+% hexGw900				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+cell cellGw600a hexGw600 fill gaslat -surfw600in
+cell cellGw600b hexGw600 WRAP600 surfw600in -surfw600ou
+cell cellGw600c hexGw600 COOLNOM surfw600ou
+
+cell cellGw900a hexGw900 fill gaslat -surfw900in
+cell cellGw900b hexGw900 WRAP900 surfw900in -surfw900ou
+cell cellGw900c hexGw900 COOLNOM surfw900ou
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% HEX - REFLECTOR		%
+% hexRw600				%
+% hexRw900				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+cell cellRw600a hexRw600 ARFL -surfw600in
+cell cellRw600b hexRw600 WRAP600 surfw600in -surfw600ou
+cell cellRw600c hexRw600 COOLNOM surfw600ou
+
+cell cellRw900a hexRw900 ARFL -surfw900in
+cell cellRw900b hexRw900 WRAP900 surfw900in -surfw900ou
+cell cellRw900c hexRw900 COOLNOM surfw900ou
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+% HEX - SHIELD			%
+% hexSw600				%
+% hexSw900				%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+cell cellSw600a hexSw600 ASHLD -surfw600in
+cell cellSw600b hexSw600 WRAP600 surfw600in -surfw600ou
+cell cellSw600c hexSw600 COOLNOM surfw600ou
+
+cell cellSw900a hexSw900 ASHLD -surfw900in
+cell cellSw900b hexSw900 WRAP900 surfw900in -surfw900ou
+cell cellSw900c hexSw900 COOLNOM surfw900ou
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+%	surface	definitions	%																								
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+
+surf	hexout	hexyc	0	0	5.540164576
+																									
+surf	s0	pz	-150	%	bottom	of	lower	axial	shield																		
+surf	s1	pz	-100	%	bottom	of	lower	axial	reflector																		
+surf	s2	pz	-70	%	bottom	of	lower	gas	exp.																		
+surf	s3	pz	-30	%	bottom	of	fuel																				
+surf	s4	pz	56.80	%	bottom	of	upper	gas	exp.																		
+surf	s5	pz	66.04	%	bottom	of	upper	axial	reflector																		
+surf	s6	pz	96.04	%	bottom	of	upper	axial	shield																		
+surf	s7	pz	146.04	%	top	of	upper	axial	shield	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%																								
+% WHOLE FUEL ASSEMBLY	%																						
+%%%%%%%%%%%%%%%%%%%%%%%%%																											
+
+cell	tmpcellFA1	1	fill	hexSw600 s0 -s1
+cell	tmpcellFA2	2	fill	hexRw600 s1 -s2
+cell	tmpcellFA3	3	fill	hexGw600 s2 -s3
+cell	tmpcellFA4	4	fill	hexFw600 s3 -s4
+cell	tmpcellFA5	5	fill	hexGw600 s4 -s5
+cell	tmpcellFA6	6	fill	hexRw600 s5 -s6
+cell	tmpcellFA7	7	fill	hexSw600 s6 -s7																																				
+
+
+cell	cellFA1	0	fill	1 -hexout s0 -s1
+cell	cellFA2	0	fill	2 -hexout s1 -s2
+cell	cellFA3	0	fill	3 -hexout s2 -s3
+cell	cellFA4	0	fill	4 -hexout s3 -s4
+cell	cellFA5	0	fill	5 -hexout s4 -s5
+cell	cellFA6	0	fill	6 -hexout s5 -s6
+cell	cellFA7	0	fill	7 -hexout s6 -s7																																			
+
+cell	cellFA8		0	outside hexout
+cell	cellFA9		0	outside -hexout -s0
+cell	cellFA10	0	outside -hexout s7
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%																											
+%	material definitions	%																								
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+% MOX600		%
+% MOX900		%
+% MOX1200		%
+% MOX1500		%
+% MOX1800		%
+% MOX2500		%
+%%%%%%%%%%%%%%%%%
+																									
+mat	MOX600	-10.49920821	rgb	0	128	255																			
+																											
+8016.01c	4.54311E+22																										
+92235.01c	1.21826E+20																										
+92238.01c	1.67984E+22																										
+94238.01c	1.6377E+20																										
+94239.01c	3.38248E+21																										
+94240.01c	1.55787E+21																										
+94241.01c	4.43253E+20																										
+94242.01c	4.35454E+20																										
+95241.01c	4.19293E+19	
+
+mat	MOX900	-10.39500187	rgb	0	128	255																			
+																											
+8016.02c	4.54311E+22																										
+92235.02c	1.21826E+20																										
+92238.02c	1.67984E+22																										
+94238.02c	1.6377E+20																										
+94239.02c	3.38248E+21																										
+94240.02c	1.55787E+21																										
+94241.02c	4.43253E+20																										
+94242.02c	4.35454E+20																										
+95241.02c	4.19293E+19
+
+mat	MOX1200	-10.29217	rgb	0	128	255																			
+																											
+8016.03c	4.54311E+22																										
+92235.03c	1.21826E+20																										
+92238.03c	1.67984E+22																										
+94238.03c	1.6377E+20																										
+94239.03c	3.38248E+21																										
+94240.03c	1.55787E+21																										
+94241.03c	4.43253E+20																										
+94242.03c	4.35454E+20																										
+95241.03c	4.19293E+19
+
+mat	MOX1500	-10.19069001	rgb	0	128	255																			
+																											
+8016.03c	3.33366E+22	%	fL	0.733783345
+92235.03c	8.93939E+19	%	fH	0.266216655
+92238.03c	1.23264E+22			
+94238.03c	1.20172E+20			
+94239.03c	2.48201E+21			
+94240.03c	1.14314E+21			
+94241.03c	3.25252E+20			
+94242.03c	3.19529E+20			
+95241.03c	3.07670E+19			
+8016.04c	1.20945E+22			
+92235.04c	3.24321E+19			
+92238.04c	4.47201E+21			
+94238.04c	4.35983E+19			
+94239.04c	9.00473E+20			
+94240.04c	4.14731E+20			
+94241.04c	1.18001E+20			
+94242.04c	1.15925E+20			
+95241.04c	1.11623E+19			
+
+mat	MOX1800	-10.09053976	rgb	0	128	255																			
+																											
+8016.03c	2.24023E+22	%	fL	0.493105091
+92235.03c	6.00730E+19	%	fH	0.506894909
+92238.03c	8.28338E+21			
+94238.03c	8.07558E+19			
+94239.03c	1.66792E+21			
+94240.03c	7.68194E+20			
+94241.03c	2.18570E+20			
+94242.03c	2.14725E+20			
+95241.03c	2.06756E+19			
+8016.04c	2.30288E+22			
+92235.04c	6.17530E+19			
+92238.04c	8.51502E+21			
+94238.04c	8.30142E+19			
+94239.04c	1.71456E+21			
+94240.04c	7.89676E+20			
+94241.04c	2.24683E+20			
+94242.04c	2.20729E+20			
+95241.04c	2.12537E+19			
+
+mat	MOX2500	-9.861905906	rgb	0	128	255																			
+																											
+8016.04c	4.54311E+22																										
+92235.04c	1.21826E+20																										
+92238.04c	1.67984E+22																										
+94238.04c	1.6377E+20																										
+94239.04c	3.38248E+21																										
+94240.04c	1.55787E+21																										
+94241.04c	4.43253E+20																										
+94242.04c	4.35454E+20																										
+95241.04c	4.19293E+19																											
+																										
+
+%%%%%%%%%%%%%%%%%
+% CLAD600		%
+% CLAD900		%
+% CLAD1200		%
+%%%%%%%%%%%%%%%%%
+
+mat	CLAD600	-7.769361782 rgb	128	128	128																			
+
+14028.01c	1.30595E+21
+14029.01c	6.63132E+19
+14030.01c	4.37141E+19																																																
+22046.01c	3.22563E+19
+22047.01c	2.90894E+19
+22048.01c	2.88235E+20
+22049.01c	2.11523E+19
+22050.01c	2.02531E+19																							
+24050.01c	5.66927E+20
+24052.01c	1.09326E+22
+24053.01c	1.23967E+21
+24054.01c	3.08580E+20																							
+25055.01c	1.27748E+21																																												
+26054.01c	3.21972E+21
+26056.01c	5.05427E+22
+26057.01c	1.16725E+21
+26058.01c	1.55340E+20																						
+28058.01c	8.4123306E+21
+28060.01c	3.2404147E+21
+28061.01c	1.4085858E+20
+28062.01c	4.4911880E+20
+28064.01c	1.1437732E+20
+42092.01c	1.0856306E+20
+42094.01c	6.7669023E+19
+42095.01c	1.1646387E+20
+42096.01c	1.2202371E+20
+42097.01c	6.9863694E+19
+42098.01c	1.7652470E+20
+42100.01c	7.0448939E+19
+
+mat	CLAD900	-7.653977120 rgb	128	128	128																			
+
+14028.02c	1.30595E+21
+14029.02c	6.63132E+19
+14030.02c	4.37141E+19																																																
+22046.02c	3.22563E+19
+22047.02c	2.90894E+19
+22048.02c	2.88235E+20
+22049.02c	2.11523E+19
+22050.02c	2.02531E+19																							
+24050.02c	5.66927E+20
+24052.02c	1.09326E+22
+24053.02c	1.23967E+21
+24054.02c	3.08580E+20																							
+25055.02c	1.27748E+21																																												
+26054.02c	3.21972E+21
+26056.02c	5.05427E+22
+26057.02c	1.16725E+21
+26058.02c	1.55340E+20																						
+28058.02c	8.4123306E+21
+28060.02c	3.2404147E+21
+28061.02c	1.4085858E+20
+28062.02c	4.4911880E+20
+28064.02c	1.1437732E+20
+42092.02c	1.0856306E+20
+42094.02c	6.7669023E+19
+42095.02c	1.1646387E+20
+42096.02c	1.2202371E+20
+42097.02c	6.9863694E+19
+42098.02c	1.7652470E+20
+42100.02c	7.0448939E+19
+
+mat	CLAD1200	-7.540866001 rgb	128	128	128																			
+
+14028.03c	1.30595E+21
+14029.03c	6.63132E+19
+14030.03c	4.37141E+19																																																
+22046.03c	3.22563E+19
+22047.03c	2.90894E+19
+22048.03c	2.88235E+20
+22049.03c	2.11523E+19
+22050.03c	2.02531E+19																							
+24050.03c	5.66927E+20
+24052.03c	1.09326E+22
+24053.03c	1.23967E+21
+24054.03c	3.08580E+20																							
+25055.03c	1.27748E+21																																												
+26054.03c	3.21972E+21
+26056.03c	5.05427E+22
+26057.03c	1.16725E+21
+26058.03c	1.55340E+20																						
+28058.03c	8.4123306E+21
+28060.03c	3.2404147E+21
+28061.03c	1.4085858E+20
+28062.03c	4.4911880E+20
+28064.03c	1.1437732E+20
+42092.03c	1.0856306E+20
+42094.03c	6.7669023E+19
+42095.03c	1.1646387E+20
+42096.03c	1.2202371E+20
+42097.03c	6.9863694E+19
+42098.03c	1.7652470E+20
+42100.03c	7.0448939E+19																							
+
+%%%%%%%%%%%%%%%%%
+% WRAP600		%
+% WRAP900		%
+%%%%%%%%%%%%%%%%%
+																										
+mat	WRAP600	-7.790204593	rgb	64	64	64																			
+																																																	
+14028.01c	1.3094496E+21
+14029.01c	6.6490669E+19
+14030.01c	4.3831139E+19																					
+22046.01c	3.2342888E+19
+22047.01c	2.9167404E+19
+22048.01c	2.8900820E+20
+22049.01c	2.1209094E+19
+22050.01c	2.0307413E+19																					
+24050.01c	5.6844766E+20
+24052.01c	1.0961947E+22
+24053.01c	1.2429968E+21
+24054.01c	3.0940822E+20
+25055.01c	1.28091E+21																																												
+26054.01c	3.2283572E+21
+26056.01c	5.0678303E+22
+26057.01c	1.1703830E+21
+26058.01c	1.5575650E+20																						
+28058.01c	8.4349321E+21
+28060.01c	3.2491208E+21
+28061.01c	1.4123703E+20
+28062.01c	4.5032545E+20
+28064.01c	1.1468462E+20																						
+42092.01c	1.0885422E+20
+42094.01c	6.7850508E+19
+42095.01c	1.1677622E+20
+42096.01c	1.2235097E+20
+42097.01c	7.0051065E+19
+42098.01c	1.7699813E+20
+42100.01c	7.0637880E+19
+
+mat	WRAP900	-7.674510390	rgb	64	64	64																			
+																																																	
+14028.02c	1.3094496E+21
+14029.02c	6.6490669E+19
+14030.02c	4.3831139E+19																					
+22046.02c	3.2342888E+19
+22047.02c	2.9167404E+19
+22048.02c	2.8900820E+20
+22049.02c	2.1209094E+19
+22050.02c	2.0307413E+19																					
+24050.02c	5.6844766E+20
+24052.02c	1.0961947E+22
+24053.02c	1.2429968E+21
+24054.02c	3.0940822E+20
+25055.02c	1.28091E+21																																												
+26054.02c	3.2283572E+21
+26056.02c	5.0678303E+22
+26057.02c	1.1703830E+21
+26058.02c	1.5575650E+20																						
+28058.02c	8.4349321E+21
+28060.02c	3.2491208E+21
+28061.02c	1.4123703E+20
+28062.02c	4.5032545E+20
+28064.02c	1.1468462E+20																						
+42092.02c	1.0885422E+20
+42094.02c	6.7850508E+19
+42095.02c	1.1677622E+20
+42096.02c	1.2235097E+20
+42097.02c	7.0051065E+19
+42098.02c	1.7699813E+20
+42100.02c	7.0637880E+19
+
+%%%%%%%%%%%%%%%%%
+% COOLNOM		%
+% COOLEXP1		%
+% COOLEXP2		%
+% COOLEXP3		%
+%%%%%%%%%%%%%%%%%
+
+mat	COOLNOM	-0.005022554	rgb	255	255	102																			
+																											
+2004.01c	7.55675E+20
+
+mat	COOLEXP1	-0.003348369	rgb	255	255	102																			
+																											
+2004.02c	7.55675E+20
+
+mat	COOLEXP2	-0.002511277	rgb	255	255	102																			
+																											
+2004.03c	7.55675E+20
+
+mat	COOLEXP3	-0.00005022554	rgb	255	255	102																			
+																											
+2004.03c	7.55675E+20
+
+%%%%%%%%%%%%%%%%%
+% INGAS			%
+% ARFL			%
+% ASHLD			%
+%%%%%%%%%%%%%%%%%
+
+mat	INGAS	-0.000164144 rgb	224	224	224																			
+																											
+2004.01c	2.46965E+19		
+																											
+mat	ARFL	-6.092703671	rgb	239	197	57																			
+																											
+2004.01c	1.88919E+20		%	2004.03c																							
+%14000.01c	1.06483E+21		%	14000.03c																							
+14028.01c	9.8208951E+20
+14029.01c	4.9868119E+19
+14030.01c	3.2873432E+19
+%22000.01c	2.94026E+20		%	22000.03c																							
+22046.01c	2.4257145E+19
+22047.01c	2.1875534E+19
+22048.01c	2.1675597E+20
+22049.01c	1.5906807E+19
+22050.01c	1.5230547E+19
+%24000.01c	9.81211E+21		%	24000.03c																							
+24050.01c	4.2633618E+20
+24052.01c	8.2214688E+21
+24053.01c	9.3224857E+20
+24054.01c	2.3205640E+20
+25055.01c	9.60681E+20		%	25055.03c																							
+%26000.01c	4.14246E+22		%	26000.03c																							
+26054.01c	2.4212679E+21
+26056.01c	3.8008727E+22
+26057.01c	8.7778727E+20
+26058.01c	1.1681737E+20
+%28000.01c	9.29271E+21		%	28000.03c																							
+28058.01c	6.3261889E+21
+28060.01c	2.4368366E+21
+28061.01c	1.0592760E+20
+28062.01c	3.3774354E+20
+28064.01c	8.6013324E+19
+%42000.01c	5.5014E+20		%	42000.03c																							
+42092.01c	8.1640776E+19
+42094.01c	5.0887950E+19
+42095.01c	8.7582288E+19
+42096.01c	9.1763352E+19
+42097.01c	5.2538370E+19
+42098.01c	1.3274878E+20
+42100.01c	5.2978482E+19
+																											
+mat	ASHLD	-1.737029481	rgb	255	0	255																			
+																											
+2004.01c	3.0227E+20		%	2004.03c																							
+5010.01c	8.25311E+21		%	5010.03c																							
+5011.01c	3.34292E+22		%	5011.03c																							
+6012.01c	1.04206E+22		%	6012.03c																							
+%14000.01c	1.41977E+20		%	14000.03c																							
+%22000.01c	3.92035E+19		%	22000.03c																							
+%24000.01c	1.30828E+21		%	24000.03c																							
+25055.01c	1.28091E+20		%	25055.03c																							
+%26000.01c	5.52328E+21		%	26000.03c																							
+%28000.01c	1.23903E+21		%	28000.03c																							
+%42000.01c	7.33519E+19		%	42000.03c																							
+14028.01c	1.3094496E+20
+14029.01c	6.6490669E+18
+14030.01c	4.3831139E+18
+22046.01c	3.2342888E+18
+22047.01c	2.9167404E+18
+22048.01c	2.8900820E+19
+22049.01c	2.1209094E+18
+22050.01c	2.0307413E+18
+24050.01c	5.6844766E+19
+24052.01c	1.0961947E+21
+24053.01c	1.2429968E+20
+24054.01c	3.0940822E+19
+26054.01c	3.2283572E+20
+26056.01c	5.0678303E+21
+26057.01c	1.1703830E+20
+26058.01c	1.5575650E+19	
+28058.01c	8.4349321E+20
+28060.01c	3.2491208E+20
+28061.01c	1.4123703E+19
+28062.01c	4.5032545E+19
+28064.01c	1.1468462E+19
+42092.01c	1.0885422E+19
+42094.01c	6.7850508E+18
+42095.01c	1.1677622E+19
+42096.01c	1.2235097E+19
+42097.01c	7.0051065E+18
+42098.01c	1.7699813E+19
+42100.01c	7.0637880E+18
+
+%%%%%%%%%%%%%%%%%%%																										
+%%%	BRANCHES	%%%																									
+%%%%%%%%%%%%%%%%%%%
+
+trans S trsurf600 0 0 -0.574340252
+trans S trsurf900 0 0 -0.287170126
+trans S trsurf1500 0 0 0.287170126
+trans S trsurf1800 0 0 0.574340252
+trans S trsurf2500 0 0 1.244403879
+
+branch nom
+
+branch F600 	repu pinf1200 pinf600
+				tra s4 trsurf600
+branch F900 	repu pinf1200 pinf900
+				tra s4 trsurf900
+branch F1500 	repu pinf1200 pinf1500
+				tra s4 trsurf1500
+branch F1800 	repu pinf1200 pinf1800
+				tra s4 trsurf1800
+branch F2500 	repu pinf1200 pinf2500
+				tra s4 trsurf2500
+
+branch C900		repu pinc600 pinc900
+				repu ping600 ping900
+branch C1200	repu pinc600 pinc1200
+				repu ping600 ping1200
+
+branch HEX900	repu hexFw600 hexFw900
+				repu hexGw600 hexGw900
+				repu hexRw600 hexRw900
+				repu hexSw600 hexSw900
+
+branch CEXP1	repm COOLNOM COOLEXP1
+branch CEXP2	repm COOLNOM COOLEXP2
+branch CEXP3	repm COOLNOM COOLEXP3
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%																										
+%%%		coefficient  matrix		%%%																									
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+coef 1 0
+2 F1500 F1800
+
+%%%%%%%%%%%%%%%																											
+%%%	OPTIONS	%%%																									
+%%%%%%%%%%%%%%%
+
+set	pop	200000 1500 50
+%set	pop	2000 1500 50
+
+set bc 2 2 1
+set	cpd	2	10	-30	56.8
+set	ures	1	1																						
+
+set	gcu 1 2 3 4 5 6 7								
+set	nfg	24	1.486254E-04	3.043248E-04	4.539993E-04	7.485183E-04	1.234098E-03	2.034684E-03	3.354626E-03	5.530844E-03	9.118820E-03	1.503439E-02	2.478752E-02	4.086771E-02	6.737947E-02	1.110900E-01	1.831564E-01	3.019738E-01	4.978707E-01	8.208500E-01	1.353353E+00	2.231302E+00	3.678794E+00	6.065307E+00	1.000000E+01									
+set	micro nj21																																																																			
+set fum nj21 2
+
+set cmm 0
+% set coefpara 1 GC_UNIVERSE_NAME MICRO_NG MICRO_E MACRO_NG MACRO_E INF_MICRO_FLX INF_FLX INF_KINF INF_TOT INF_FISS INF_NSF INF_KAPPA INF_INVV INF_NUBAR INF_ABS INF_CHIT INF_CHIP INF_CHID INF_SCATTP0  INF_SCATTP1 INF_SCATTP2 INF_SCATTP3 INF_SP0 INF_SP1 INF_SP2 INF_SP3 INF_DIFFCOEF B1_MICRO_FLX B1_FLX B1_KINF B1_KEFF B1_B2 B1_ERR B1_TOT B1_FISS B1_NSF B1_KAPPA B1_INVV B1_NUBAR B1_ABS B1_CHIT B1_CHIP B1_CHID B1_SCATTP0 B1_SCATTP1 B1_SCATTP2 B1_SCATTP3 B1_SP0 B1_SP1 B1_SP2 B1_SP3 B1_DIFFCOEF BETA_EFF LAMBDA
+
+plot	2	1000 1000	2																							
+plot	3	866 1000																						
+
+set	acelib	"xs/endfb8.0.xsdata"	
